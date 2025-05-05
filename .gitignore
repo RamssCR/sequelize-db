@@ -1,0 +1,27 @@
+# node_modules
+node_modules/
+
+# build output
+dist/
+build/
+out-tsc/
+coverage/
+html/
+
+# temporary files
+request.http
+
+# envs
+.env
+.env.*.local
+.env.local
+.env.*.local
+.env.*.test
+.env.*.development
+.env.*.production
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

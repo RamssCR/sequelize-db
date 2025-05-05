@@ -1,0 +1,56 @@
+{
+  "name": "sequelize-db",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node --watch --env-file=.env src/app.js",
+    "lint": "eslint . --ext .js --fix",
+    "test": "node --test --env-file=.env",
+    "test:coverage": "c8 --all --reporter=html --reporter=text node --test --env-file=.env"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.15.6",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7",
+    "zod": "^3.24.4"
+  },
+  "imports": {
+    "#*": "./src/*"
+  },
+  "c8": {
+    "exclude": [
+      ".config.*",
+      "test/*",
+      "src/app.js"
+    ],
+    "include": [
+      "src/"
+    ],
+    "reporter": "text",
+    "all": true,
+    "check-coverage": true,
+    "branches": 0,
+    "functions": 0,
+    "lines": 0,
+    "statements": 0
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "c8": "^10.1.3",
+    "eslint": "^9.26.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^7.2.1"
+  }
+}
