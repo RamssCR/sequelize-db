@@ -49,22 +49,13 @@ export const Book = sequelize.define('Book', {
 
 // Associations
 Author.hasMany(Book)
-Book.belongsTo(Author, {
-  foreignKey: 'authorId',
-  as: 'author'
-})
+Book.belongsTo(Author)
 
 Category.hasMany(Book)
-Book.belongsTo(Category, {
-  foreignKey: 'categoryId',
-  as: 'category'
-})
+Book.belongsTo(Category)
 
 Genre.hasMany(Book)
-Book.belongsTo(Genre, {
-  foreignKey: 'genreId',
-  as: 'genre'
-})
+Book.belongsTo(Genre)
 
 Book.belongsToMany(User, {
   through: 'UserBook',
