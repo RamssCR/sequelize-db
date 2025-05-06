@@ -1,4 +1,4 @@
-import { sign, JsonWebTokenError } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import { JWT_SECRET } from '#configs/env.config.js'
 
 /**
@@ -10,16 +10,10 @@ import { JWT_SECRET } from '#configs/env.config.js'
 export const createToken = (payload) => {
   return new Promise((resolve, reject) => {
     try {
-      const token = sign(payload, JWT_SECRET, { expiresIn: '1h' })
+      const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "1D" })
       resolve(token)
     } catch (error) {
-      if (error instanceof JsonWebTokenError) {
-        reject({
-          stack: error.stack,
-          message: error.message,
-          name: error.name
-        })
-      }
+      reject(error)
     }
   })
 }
