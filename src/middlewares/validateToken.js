@@ -1,4 +1,4 @@
-import { verify } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 import { JWT_SECRET } from '#configs/env.config.js'
 
 /**
@@ -14,7 +14,7 @@ export const validateToken = (req, res, next) => {
 
   if (!token) return res.status(401).json({ message: 'Unauthorized access to this account' })
 
-  verify(token, JWT_SECRET, (error, decoded) => {
+  jwt.verify(token, JWT_SECRET, (error, decoded) => {
     if (error) return res.status(400).json({ message: 'The token provided is invalid' })
 
     req.user = decoded
