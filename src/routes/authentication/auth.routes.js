@@ -12,10 +12,10 @@ import {
 export const authRouter = Router()
 
 // Create an user when registering
-authRouter.get('/register', validateSchema(userSchema), register)
+authRouter.post('/register', validateSchema(userSchema), register)
 
 // Logging into the user's account
-authRouter.get('/login', validateSchema(userSchema, "partial"), login)
+authRouter.post('/login', validateSchema(userSchema, "partial"), login)
 
 // Checking the user's profile information
 authRouter.get('/profile', validateToken, profile)
