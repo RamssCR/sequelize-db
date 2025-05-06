@@ -1,5 +1,7 @@
 import { Router } from 'express'
 import { validateToken } from '#middlewares/validateToken.js'
+import { validateSchema } from '#middlewares/validateSchema.js'
+import { bookSchema } from '#schemas/bookSchema.js'
 
 export const bookRouter = Router()
 
@@ -10,10 +12,10 @@ bookRouter.get('/', validateToken)
 bookRouter.get('/:id', validateToken)
 
 // Create a new book
-bookRouter.post('/', validateToken)
+bookRouter.post('/', validateSchema(bookSchema), validateToken)
 
 // Update a book by ID
-bookRouter.patch('/:id', validateToken)
+bookRouter.patch('/:id', validateSchema(bookSchema, "partial"), validateToken)
 
 // Delete a book by ID
 bookRouter.delete('/:id', validateToken)
