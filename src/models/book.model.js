@@ -54,12 +54,5 @@ Book.belongsTo(Category)
 Genre.hasMany(Book)
 Book.belongsTo(Genre)
 
-Book.belongsToMany(User, {
-  through: 'UserBook',
-  as: 'users'
-})
-
-User.belongsToMany(Book, {
-  through: 'UserBook',
-  as: 'books'
-})
+Book.belongsToMany(User, { through: 'Shelf' })
+User.belongsToMany(Book, { through: 'Shelf' })

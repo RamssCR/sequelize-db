@@ -12,7 +12,7 @@ export const Author = sequelize.define('Author', {
     allowNull: false,
   },
   birthDate: {
-    type: DataTypes.DATE,
+    type: DataTypes.STRING,
     allowNull: true,
   },
 }, {
