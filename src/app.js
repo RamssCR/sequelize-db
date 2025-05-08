@@ -2,6 +2,7 @@ import express, { json, urlencoded } from 'express'
 import { PORT } from '#configs/env.config.js'
 import { connectDB } from '#configs/connect.js'
 import { cors } from '#middlewares/cors.js'
+import { errorHandler } from '#middlewares/errorHandler.js'
 import helmet from 'helmet'
 import parser from 'cookie-parser'
 import { router } from '#routes/index.js'
@@ -14,6 +15,7 @@ app.use(cors())
 app.use(helmet())
 app.use(parser())
 app.use('/api/v1', router)
+app.use(errorHandler)
 
 app.get('/health', (req, res) => {
   res.status(200).json({
