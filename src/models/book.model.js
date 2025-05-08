@@ -39,12 +39,9 @@ export const Book = sequelize.define('Book', {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
-  disabled: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  }
 }, {
   timestamps: true,
+  paranoid: true,
 })
 
 // Associations

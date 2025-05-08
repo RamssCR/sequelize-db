@@ -23,10 +23,7 @@ export const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  disabled: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  }
 }, {
-  timestamps: true
+  timestamps: true,
+  paranoid: true,
 })
