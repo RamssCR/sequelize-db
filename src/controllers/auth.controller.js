@@ -15,7 +15,7 @@ export const register = async (req, res, next) => {
 
   try {
     const hashedPassword = await hash(password, 10)
-    const isExistingUser = await User.findOne({ 
+    const isExistingUser = await User.findOne({
       where: { email },
       attributes: ['id', 'email', 'username']
     })
@@ -56,7 +56,7 @@ export const register = async (req, res, next) => {
  * @returns {Promise<void>} A promise that resolves when the user is logged in.
  * @throws {Error} If the credentials are invalid or if there is an error during login.
  */
-export const login = async (req, res) => {
+export const login = async (req, res, next) => {
   const { email, password } = req.body
 
   try {
