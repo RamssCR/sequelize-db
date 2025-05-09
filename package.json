@@ -8,13 +8,14 @@
     "dev": "node --watch --env-file=.env src/app.js",
     "lint": "eslint . --ext .js --fix",
     "test": "node --test --env-file=.env",
-    "test:coverage": "c8 --all --reporter=html --reporter=text node --test --env-file=.env"
+    "test:coverage": "c8 --all --reporter=html --reporter=text node --test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "cookie-parser": "^1.4.7",
     "express": "^5.1.0",
     "helmet": "^8.1.0",

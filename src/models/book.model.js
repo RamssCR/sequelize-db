@@ -39,39 +39,20 @@ export const Book = sequelize.define('Book', {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
-  disabled: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  }
 }, {
   timestamps: true,
+  paranoid: true,
 })
 
 // Associations
 Author.hasMany(Book)
-Book.belongsTo(Author, {
-  foreignKey: 'authorId',
-  as: 'author'
-})
+Book.belongsTo(Author)
 
 Category.hasMany(Book)
-Book.belongsTo(Category, {
-  foreignKey: 'categoryId',
-  as: 'category'
-})
+Book.belongsTo(Category)
 
 Genre.hasMany(Book)
-Book.belongsTo(Genre, {
-  foreignKey: 'genreId',
-  as: 'genre'
-})
+Book.belongsTo(Genre)
 
-Book.belongsToMany(User, {
-  through: 'UserBook',
-  as: 'users'
-})
-
-User.belongsToMany(Book, {
-  through: 'UserBook',
-  as: 'books'
-})
+Book.belongsToMany(User, { through: 'Shelf' })
+User.belongsToMany(Book, { through: 'Shelf' })

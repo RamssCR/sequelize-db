@@ -4,5 +4,6 @@ import { bookRouter } from './books/book.routes.js'
 
 export const router = Router()
 
-router.use('/auth', authRouter)
-router.use('/books', bookRouter)
+router
+  .use('/auth', authRouter)
+  .use('/books', bookRouter)
