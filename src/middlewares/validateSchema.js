@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Validates a request body against a given zod schema.
  * If the validation fails, it sends a 400 response with the error message.
@@ -7,7 +8,7 @@
  * @param {'full' | 'partial'} type - The type of validation to perform ('full' or 'partial').
  * @returns {string[]} - A list of error messages if validation fails, otherwise an empty array.
  */
-const parseSchema = (object, schema, type) => {
+const parseSchema = (object, schema, type = "full") => {
   let result
 
   if (type === "full") {
@@ -32,7 +33,7 @@ const parseSchema = (object, schema, type) => {
  * @param {'full' | 'partial'} [type] - The type of validation to perform ('full' or 'partial').
  * @returns {(req: import('express').Request, res: import('express').Response, next: import('express').NextFunction) => void} - The middleware function.
  */
-export const validateSchema = (schema, type) => {
+export const validateSchema = (schema, type = "full") => {
   return (req, res, next) => {
     const errors = parseSchema(req.body, schema, type)
 

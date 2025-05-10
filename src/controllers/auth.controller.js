@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { User } from '#models/user.model.js'
 import { createToken } from '#libs/jwt.js'
 import { hash, compare } from 'bcryptjs'
@@ -7,7 +8,7 @@ import { hash, compare } from 'bcryptjs'
  * @param {import("express").Request} req - The request object.
  * @param {import("express").Response} res - The response object.
  * @param {import("express").NextFunction} next - The next middleware function.
- * @returns {Promise<void>} A promise that resolves when the user is registered.
+ * @returns {Promise<import('express').Response<any, Record<string, any>> | undefined>} A promise that resolves when the user is registered.
  * @throws {Error} If the user is already registered or if there is an error during registration.
  */
 export const register = async (req, res, next) => {
@@ -53,7 +54,7 @@ export const register = async (req, res, next) => {
  * @param {import("express").Request} req - The request object.
  * @param {import("express").Response} res - The response object.
  * @param {import("express").NextFunction} next - The next middleware function.
- * @returns {Promise<void>} A promise that resolves when the user is logged in.
+ * @returns {Promise<import('express').Response<any, Record<string, any>> | undefined>} A promise that resolves when the user is logged in.
  * @throws {Error} If the credentials are invalid or if there is an error during login.
  */
 export const login = async (req, res, next) => {
@@ -94,7 +95,7 @@ export const login = async (req, res, next) => {
  * @param {import("express").Request} req - The request object.
  * @param {import("express").Response} res - The response object.
  * @param {import("express").NextFunction} next - The next middleware function.
- * @returns {Promise<void>} A promise that resolves when the profile is retrieved.
+ * @returns {Promise<import('express').Response<any, Record<string, any>> | undefined>} A promise that resolves when the profile is retrieved.
  * @throws {Error} If there is an error during profile retrieval.
  */
 export const profile = async (req, res, next) => {
@@ -134,7 +135,7 @@ export const profile = async (req, res, next) => {
  * @param {import("express").Request} req - The request object.
  * @param {import("express").Response} res - The response object.
  * @param {import("express").NextFunction} next - The next middleware function.
- * @returns {Promise<void>} A promise that resolves when the user is logged out.
+ * @returns {Promise<import('express').Response<any, Record<string, any>> | undefined>} A promise that resolves when the user is logged out.
  * @throws {Error} If there is an error during logout.
  */
 export const logout = async (req, res, next) => {

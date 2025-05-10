@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { Router } from 'express'
 import { validateToken } from '#middlewares/validateToken.js'
 import { validateSchema } from '#middlewares/validateSchema.js'
