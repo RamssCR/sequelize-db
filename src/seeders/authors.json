@@ -1,0 +1,20 @@
+[
+    { "name": "Miguel de Cervantes", "birthDate": "1547-09-29" },
+    { "name": "Jane Austen", "birthDate": "1775-12-16" },
+    { "name": "Charles Dickens", "birthDate": "1812-02-07" },
+    { "name": "Mark Twain", "birthDate": "1835-11-30" },
+    { "name": "Virginia Woolf", "birthDate": "1882-01-25" },
+    { "name": "F. Scott Fitzgerald", "birthDate": "1896-09-24" },
+    { "name": "Ernest Hemingway", "birthDate": "1899-07-21" },
+    { "name": "Gabriel García Márquez", "birthDate": "1927-03-06" },
+    { "name": "Harper Lee", "birthDate": "1926-04-28" },
+    { "name": "J.K. Rowling", "birthDate": "1965-07-31" },
+    { "name": "Stephen King", "birthDate": "1947-09-21" },
+    { "name": "Neil Gaiman", "birthDate": "1960-11-10" },
+    { "name": "Margaret Atwood", "birthDate": "1939-11-18" },
+    { "name": "Toni Morrison", "birthDate": "1931-02-18" },
+    { "name": "Chimamanda Ngozi Adichie", "birthDate": "1977-09-15" },
+    { "name": "Kazuo Ishiguro", "birthDate": "1954-11-08" },
+    { "name": "Isabel Allende", "birthDate": "1942-08-02" },
+    { "name": "Orson Scott Card", "birthDate": "1951-08-24" }
+]

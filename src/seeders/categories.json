@@ -1,0 +1,12 @@
+[
+    { "name": "Fiction" },
+    { "name": "Non-Fiction" },
+    { "name": "Reference" },
+    { "name": "Academic" },
+    { "name": "Children's Books" },
+    { "name": "Young Adult" },
+    { "name": "Poetry" },
+    { "name": "Anthologies" },
+    { "name": "Biography" },
+    { "name": "Art & Photography" }
+]

@@ -1,0 +1,98 @@
+[
+{
+    "title": "Don Quixote",
+    "subtitle": "The Ingenious Gentleman of La Mancha",
+    "synopsis": "A tale of an elderly man who becomes obsessed with books of chivalry and decides to become a knight-errant.",
+    "content": "In a village of La Mancha, whose name I do not wish to remember...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/0060934344.01.L.jpg",
+    "pages": 863,
+    "chapters": 52,
+    "authorName": "Miguel de Cervantes",
+    "categoryName": "Fiction",
+    "genreName": "Classic Literature"
+},
+{
+    "title": "1984",
+    "subtitle": "A Vision of Totalitarian Future",
+    "synopsis": "In a totalitarian future society, a man, whose daily work is perpetuating propaganda and historical revisionism, rebels against the system.",
+    "content": "It was a bright cold day in April, and the clocks were striking thirteen...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/0452284236.01.L.jpg",
+    "pages": 328,
+    "chapters": 23,
+    "authorName": "George Orwell",
+    "categoryName": "Fiction",
+    "genreName": "Dystopian"
+},
+{
+    "title": "Beloved",
+    "subtitle": "A Ghost Story of Memory and Loss",
+    "synopsis": "A former slave is haunted by the ghost of her daughter in post-Civil War Ohio.",
+    "content": "124 was spiteful. Full of a baby's venom...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/1400033411.01.L.jpg",
+    "pages": 324,
+    "chapters": 28,
+    "authorName": "Toni Morrison",
+    "categoryName": "Fiction",
+    "genreName": "Literary Fiction"
+},
+{
+    "title": "Never Let Me Go",
+    "subtitle": "A Story of Love and Loss",
+    "synopsis": "A woman reflects on her life at a seemingly idyllic English boarding school and the dark secret behind their existence.",
+    "content": "My name is Kathy H. I'm thirty-one years old, and I've been a carer now for over eleven years...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/1400078776.01.L.jpg",
+    "pages": 288,
+    "chapters": 23,
+    "authorName": "Kazuo Ishiguro",
+    "categoryName": "Fiction",
+    "genreName": "Literary Fiction"
+},
+{
+    "title": "The Handmaid's Tale",
+    "subtitle": "A Story of Dystopian Patriarchy",
+    "synopsis": "In a totalitarian society, women are forced into sexual servitude in an attempt to repopulate a devastated world.",
+    "content": "We slept in what had once been the gymnasium...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/038549081X.01.L.jpg",
+    "pages": 311,
+    "chapters": 46,
+    "authorName": "Margaret Atwood",
+    "categoryName": "Fiction",
+    "genreName": "Dystopian"
+},
+{
+    "title": "Pride and Prejudice",
+    "subtitle": "A Novel of Manners",
+    "synopsis": "The story follows Elizabeth Bennet as she deals with issues of manners, upbringing, morality, education, and marriage in the society of the landed gentry of early 19th-century England.",
+    "content": "It is a truth universally acknowledged, that a single man in possession of a good fortune, must be in want of a wife...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/0141439513.01.L.jpg",
+    "pages": 432,
+    "chapters": 61,
+    "authorName": "Jane Austen",
+    "categoryName": "Fiction",
+    "genreName": "Classic Literature"
+},
+{
+    "title": "Brave New World",
+    "subtitle": "A Vision of a Controlled Society",
+    "synopsis": "Set in a futuristic World State, where humans are genetically engineered and pharmaceutically controlled to serve societal stability.",
+    "content": "A squat grey building of only thirty-four stories...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/0060850523.01.L.jpg",
+    "pages": 288,
+    "chapters": 18,
+    "authorName": "Aldous Huxley",
+    "categoryName": "Fiction",
+    "genreName": "Dystopian"
+},
+{
+    "title": "To Kill a Mockingbird",
+    "subtitle": "A Story of Justice and Innocence",
+    "synopsis": "Through a young girl's eyes, we witness racial injustice and the loss of innocence in a small Southern town.",
+    "content": "When he was nearly thirteen, my brother Jem got his arm badly broken at the elbow...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/0446310786.01.L.jpg",
+    "pages": 376,
+    "chapters": 31,
+    "authorName": "Harper Lee",
+    "categoryName": "Fiction",
+    "genreName": "Classic Literature"
+}
+]
