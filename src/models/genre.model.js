@@ -12,6 +12,11 @@ export const Genre = sequelize.define('Genre', {
     allowNull: false,
     unique: true,
   },
+  slug: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
 }, {
   timestamps: true,
   paranoid: true,

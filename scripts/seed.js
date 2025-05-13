@@ -34,6 +34,7 @@ const transformedBooks = books.map(book => {
 
   return {
     title: book.title,
+    slug: book.slug,
     subtitle: book.subtitle,
     synopsis: book.synopsis,
     content: book.content,
