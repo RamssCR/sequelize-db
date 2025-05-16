@@ -1,6 +1,3 @@
-import jwt from 'jsonwebtoken'
-import { Error as SequelizeError } from 'sequelize'
-
 /**
  * Handles errors in the application.
  * This middleware function is used to catch errors that occur during the request-response cycle.
@@ -14,27 +11,9 @@ import { Error as SequelizeError } from 'sequelize'
 export const errorHandler = (error, req, res, next) => {
   if (error instanceof Error) {
     console.error(error.stack)
-    return res.status(500).json({
+    res.status(500).json({
       status: 'error',
       code: 500,
-      message: error.message,
-    })
-  }
-
-  if (error instanceof jwt.JsonWebTokenError) {
-    console.error(error.stack)
-    return res.status(401).json({
-      status: 'error',
-      code: 401,
-      message: 'Unauthorized access to use this resource',
-    })
-  }
-
-  if (error instanceof SequelizeError) {
-    console.error(error.stack)
-    return res.status(400).json({
-      status: 'error',
-      code: 400,
       message: error.message,
     })
   }

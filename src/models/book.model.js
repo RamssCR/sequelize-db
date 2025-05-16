@@ -15,6 +15,11 @@ export const Book = sequelize.define('Book', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  slug: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true,
+  },
   subtitle: {
     type: DataTypes.STRING,
     allowNull: true,
@@ -42,6 +47,13 @@ export const Book = sequelize.define('Book', {
 }, {
   timestamps: true,
   paranoid: true,
+  scopes: {
+    cleanQuery: {
+      attributes: {
+        exclude: ['createdAt', 'updatedAt', 'deletedAt', 'AuthorId', 'CategoryId', 'GenreId'],
+      },
+    }
+  }
 })
 
 // Associations
