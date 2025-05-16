@@ -27,7 +27,7 @@ export const validateToken = (req, res, next) => {
    */
   const jwtCallback = (error, decoded) => {
     if (error && error instanceof Error) {
-      return res.status(400).json({ 
+      return res.status(401).json({ 
         status: 'fail',
         message: 'The token provided is invalid' 
       })
