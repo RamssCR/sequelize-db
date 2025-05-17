@@ -15,7 +15,10 @@ import { buildQuery } from '#utils/buildQuery.js';
  * @throws {Error} If an error occurs while retrieving books from the database.
  */
 export const getAllBooks = async (req, res, next) => {
-  const { category, genre } = req.query
+  const { category, genre, page, limit } = req.query
+  const pageNumber = Number(page) || 1
+  const limitNumber = Number(limit) || 10
+  const offset = (pageNumber - 1) * limitNumber
 
   let include = [
     buildQuery(Author),
@@ -24,11 +27,24 @@ export const getAllBooks = async (req, res, next) => {
   ]
 
   try {
-    const books = await Book.scope('cleanQuery').findAll({ include })
+    const { count, rows: books } = await Book
+      .scope('cleanQuery')
+      .findAndCountAll({ 
+        include,
+        limit: limitNumber,
+        offset,
+        order: [['createdAt', 'DESC']],
+      })
     res.json({
       status: 'success',
       message: 'Books retrieved successfully',
-      data: books,
+      data: {
+        total: count,
+        page: pageNumber,
+        size: limitNumber,
+        totalPages: Math.ceil(count / limitNumber),
+        books
+      },
     })
   } catch (error) {
     next(error)
