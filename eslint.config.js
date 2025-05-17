@@ -19,9 +19,6 @@ export default [
         console: 'readonly',
         process: 'readonly',
       },
-      env: {
-        node: true,
-      }
     },
     plugins: {
       '@typescript-eslint': tseslint,
@@ -34,15 +31,6 @@ export default [
 
       // TypeScript-specific
       '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-
-      // Import sorting
-      'import/order': [
-        'warn',
-        {
-          groups: [['builtin', 'external'], ['internal'], ['parent', 'sibling', 'index']],
-          alphabetize: { order: 'asc', caseInsensitive: true },
-        },
-      ],
     },
   },
   {

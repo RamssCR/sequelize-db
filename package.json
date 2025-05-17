@@ -36,8 +36,9 @@
       ".config.*",
       "test/*",
       "src/app.js",
-      "src/config/*",
-      "src/routes/*"
+      "src/configs/*",
+      "src/routes/*",
+      "src/seeders/*"
     ],
     "include": [
       "src/"
@@ -53,6 +54,7 @@
   "devDependencies": {
     "@types/cookie-parser": "^1.4.8",
     "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/qs": "^6.9.18",
     "@types/slug": "^5.0.9",
     "@typescript-eslint/eslint-plugin": "^8.31.1",

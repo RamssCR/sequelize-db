@@ -5,6 +5,10 @@
       "moduleResolution": "node",
       "resolveJsonModule": true,
       "baseUrl": ".",
+      "typeRoots": [
+        "./node_modules/@types",
+        "./types"
+      ],
       "paths": {
         "#*": ["src/*", "seeders/*", "scripts/*"]
       },

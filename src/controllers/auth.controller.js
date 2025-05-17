@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { User } from '#models/user.model.js'
 import { createToken } from '#libs/jwt.js'
 import { hash, compare } from 'bcryptjs'
@@ -8,7 +7,6 @@ import { hash, compare } from 'bcryptjs'
  * @param {import("express").Request} req - The request object.
  * @param {import("express").Response} res - The response object.
  * @param {import("express").NextFunction} next - The next middleware function.
- * @returns {Promise<import('express').Response<any, Record<string, any>> | undefined>} A promise that resolves when the user is registered.
  * @throws {Error} If the user is already registered or if there is an error during registration.
  */
 export const register = async (req, res, next) => {
@@ -21,10 +19,13 @@ export const register = async (req, res, next) => {
       attributes: ['id', 'email', 'username']
     })
 
-    if (isExistingUser) return res.status(400).json({
-      status: 'fail',
-      message: 'user already registered'
-    })
+    if (isExistingUser) {
+      res.status(400).json({
+        status: 'fail',
+        message: 'user already registered'
+      })
+      return
+    }
 
     const user = await User.create({
       username,
@@ -33,7 +34,7 @@ export const register = async (req, res, next) => {
     })
 
     const token = await createToken({ id: user.dataValues.id })
-    return res.status(201).cookie('token', token).json({
+    res.status(201).cookie('token', token).json({
       status: 'success',
       message: 'user registered successfully',
       data: {
@@ -51,10 +52,10 @@ export const register = async (req, res, next) => {
 
 /**
  * Login a user with the provided credentials.
- * @param {import("express").Request} req - The request object.
- * @param {import("express").Response} res - The response object.
- * @param {import("express").NextFunction} next - The next middleware function.
- * @returns {Promise<import('express').Response<any, Record<string, any>> | undefined>} A promise that resolves when the user is logged in.
+ * @param {import('express').Request} req - The request object.
+ * @param {import('express').Response} res - The response object.
+ * @param {import('express').NextFunction} next - The next middleware function.
+ * @returns {Promise<void>} - A promise that resolves when the user is logged in.
  * @throws {Error} If the credentials are invalid or if there is an error during login.
  */
 export const login = async (req, res, next) => {
@@ -62,19 +63,25 @@ export const login = async (req, res, next) => {
 
   try {
     const user = await User.findOne({ where: { email } })
-    if (!user) return res.status(400).json({
-      status: 'fail',
-      message: 'Incorrect email or password'
-    })
+    if (!user) {
+      res.status(400).json({
+        status: 'fail',
+        message: 'Incorrect email or password'
+      })
+      return
+    }
 
     const isPasswordValid = await compare(password, user.dataValues.password)
-    if (!isPasswordValid) return res.status(400).json({
-      status: 'fail',
-      message: 'Incorrect email or password'
-    })
+    if (!isPasswordValid) {
+      res.status(400).json({
+        status: 'fail',
+        message: 'Incorrect email or password'
+      })
+      return
+    }
 
     const token = await createToken({ id: user.dataValues.id })
-    return res.status(200).cookie('token', token).json({
+    res.status(200).cookie('token', token).json({
       status: 'success',
       message: 'user logged in successfully',
       data: {
@@ -92,14 +99,14 @@ export const login = async (req, res, next) => {
 
 /**
  * Get the profile of the logged-in user.
- * @param {import("express").Request} req - The request object.
- * @param {import("express").Response} res - The response object.
- * @param {import("express").NextFunction} next - The next middleware function.
- * @returns {Promise<import('express').Response<any, Record<string, any>> | undefined>} A promise that resolves when the profile is retrieved.
+ * @param {import('express').Request} req - The request object.
+ * @param {import('express').Response} res - The response object.
+ * @param {import('express').NextFunction} next - The next middleware function.
+ * @returns {Promise<void>} - A promise that resolves when the profile is retrieved.
  * @throws {Error} If there is an error during profile retrieval.
  */
 export const profile = async (req, res, next) => {
-  const { id } = req.user
+  const id = req.user?.id
 
   try {
     const user = await User.findOne({
@@ -107,14 +114,17 @@ export const profile = async (req, res, next) => {
       attributes: ['id', 'username', 'email']
     })
 
-    if (!user) return res
-      .cookie('token', '', { expires: new Date(0) })
-      .status(401).json({
-        status: 'fail',
-        message: 'Invalid session'
-      })
+    if (!user) {
+      res
+        .cookie('token', '', { expires: new Date(0) })
+        .status(401).json({
+          status: 'fail',
+          message: 'Invalid session'
+        })
+      return
+    }
 
-    return res.status(200).json({
+    res.status(200).json({
       status: 'success',
       message: 'user profile retrieved successfully',
       data: {
@@ -132,15 +142,15 @@ export const profile = async (req, res, next) => {
 
 /**
  * Logout the user by clearing the session or token.
- * @param {import("express").Request} req - The request object.
- * @param {import("express").Response} res - The response object.
- * @param {import("express").NextFunction} next - The next middleware function.
- * @returns {Promise<import('express').Response<any, Record<string, any>> | undefined>} A promise that resolves when the user is logged out.
+ * @param {import('express').Request} req - The request object.
+ * @param {import('express').Response} res - The response object.
+ * @param {import('express').NextFunction} next - The next middleware function.
+ * @returns {Promise<void>} - A promise that resolves when the user is logged out.
  * @throws {Error} If there is an error during logout.
  */
 export const logout = async (req, res, next) => {
   try {
-    return res
+    res
       .cookie('token', '', { expires: new Date(0) })
       .sendStatus(204)
   } catch (error) {

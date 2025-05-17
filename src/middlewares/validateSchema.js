@@ -1,24 +1,25 @@
-// @ts-nocheck
+import { z } from "zod"
+
 /**
  * Validates a request body against a given zod schema.
  * If the validation fails, it sends a 400 response with the error message.
  * If the validation succeeds, it calls the next middleware.
- * @param {object} object - The object to validate.
- * @param {import('zod').ZodSchema} schema - The zod schema to validate against.
+ * @param {Record<string, unknown>} object - The object to validate.
+ * @param {z.ZodSchema} schema - The zod schema to validate against.
  * @param {'full' | 'partial'} type - The type of validation to perform ('full' or 'partial').
  * @returns {string[]} - A list of error messages if validation fails, otherwise an empty array.
  */
 const parseSchema = (object, schema, type = "full") => {
   let result
 
-  if (type === "full") {
-    result = schema.safeParse(object)
-  } else {
+  if (type === "partial" && schema instanceof z.ZodObject) {
     result = schema.partial().safeParse(object)
+  } else {
+    result = schema.safeParse(object)
   }
 
   if (result.error) {
-    const errors = result.error.errors.map((error) => error.message)
+    const errors = result.error?.errors.map((error) => error.message) ?? []
     return errors
   }
 
@@ -29,7 +30,7 @@ const parseSchema = (object, schema, type = "full") => {
  * Middleware to validate the request body against a zod schema.
  * If the validation fails, it sends a 400 response with the error message.
  * If the validation succeeds, it calls the next middleware.
- * @param {import('zod').ZodSchema} schema - The zod schema to validate against.
+ * @param {z.ZodSchema} schema - The zod schema to validate against.
  * @param {'full' | 'partial'} [type] - The type of validation to perform ('full' or 'partial').
  * @returns {(req: import('express').Request, res: import('express').Response, next: import('express').NextFunction) => void} - The middleware function.
  */
