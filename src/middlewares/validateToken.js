@@ -1,38 +1,35 @@
-// @ts-nocheck
 import jwt from 'jsonwebtoken'
 import { JWT_SECRET } from '#configs/env.config.js'
 
 /**
  * Validates the JWT token in the request headers.
  * If the token is valid, it adds the decoded user information to the request object.
- * @param {import('express').Request} req - The request object.
- * @param {import('express').Response} res - The response object.
- * @param {import('express').NextFunction} next - The next middleware function.
- * @returns {import('express').Response<any, Record<string, any>> | undefined} A promise that resolves when the token is validated.
+ * @type {import('express').RequestHandler} 
  */
 export const validateToken = (req, res, next) => {
   const { token } = req.cookies
 
-  if (!token) return res.status(401).json({ 
-    status: 'fail',
-    message: 'Unauthorized access to this account' 
-  })
+  if (!token) {
+    res.status(401).json({
+      status: 'fail',
+      message: 'Unauthorized access to this account'
+    })
+    return
+  }
 
   /**
-   * Replaces the jwt.verify function to handle the token verification.
-   * @param {Error} error - The error object if the token is invalid.
-   * @param {object} decoded - The decoded token object if the token is valid.
-   * @returns {import('express').Response<any, Record<string, any>> | undefined} A promise that resolves when the token is validated.
-   * @throws {Error} Throws an error if the token is invalid.
+   * @param {import('jsonwebtoken').VerifyErrors | null} error
+   * @param {import('jsonwebtoken').JwtPayload | string | undefined} decoded
    */
   const jwtCallback = (error, decoded) => {
-    if (error && error instanceof Error) {
-      return res.status(401).json({ 
+    if (error) {
+      return res.status(401).json({
         status: 'fail',
-        message: 'The token provided is invalid' 
+        message: 'The token provided is invalid'
       })
     }
 
+    // @ts-expect-error: extended via declaration merging
     req.user = decoded
     next()
   }
