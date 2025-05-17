@@ -9,7 +9,9 @@ import { buildQuery } from '#utils/buildQuery.js';
  * Retrieves all books from the database.
  * It also retrieves books by filtering by author, category, or genre.
  * If no filters are provided, it retrieves all books.
- * @type {import('express').RequestHandler}
+ * @param {import('express').Request} req - The request object.
+ * @param {import('express').Response} res - The response object.
+ * @param {import('express').NextFunction} next - The next middleware function.
  * @throws {Error} If an error occurs while retrieving books from the database.
  */
 export const getAllBooks = async (req, res, next) => {
@@ -35,7 +37,10 @@ export const getAllBooks = async (req, res, next) => {
 
 /**
  * Retrieves a book by its slug.
- * @type {import('express').RequestHandler}
+ * @param {import('express').Request} req - The request object.
+ * @param {import('express').Response} res - The response object.
+ * @param {import('express').NextFunction} next - The next middleware function.
+ * @returns {Promise<void>} - A promise that resolves when the book is retrieved.
  * @throws {Error} If an error occurs while retrieving the book from the database.
  */
 export const getBookBySlug = async (req, res, next) => {
@@ -73,7 +78,10 @@ export const getBookBySlug = async (req, res, next) => {
 
 /**
  * Creates a new book in the database.
- * @type {import('express').RequestHandler}
+ * @param {import('express').Request} req - The request object.
+ * @param {import('express').Response} res - The response object.
+ * @param {import('express').NextFunction} next - The next middleware function.
+ * @returns {Promise<void>} - A promise that resolves when the book is created.
  * @throws {Error} If an error occurs while creating the book in the database.
  */
 export const createBook = async (req, res, next) => {
@@ -96,7 +104,10 @@ export const createBook = async (req, res, next) => {
 
 /**
  * Updates a book in the database.
- * @type {import('express').RequestHandler}
+ * @param {import('express').Request} req - The request object.
+ * @param {import('express').Response} res - The response object.
+ * @param {import('express').NextFunction} next - The next middleware function.
+ * @returns {Promise<void>} - A promise that resolves when the book is updated.
  * @throws {Error} If an error occurs while updating the book in the database.
  */
 export const updateBook = async (req, res, next) => {
@@ -129,7 +140,10 @@ export const updateBook = async (req, res, next) => {
 
 /**
  * Deletes a book from the database.
- * @type {import('express').RequestHandler}
+ * @param {import('express').Request} req - The request object.
+ * @param {import('express').Response} res - The response object.
+ * @param {import('express').NextFunction} next - The next middleware function.
+ * @returns {Promise<void>} - A promise that resolves when the book is deleted.
  * @throws {Error} If an error occurs while deleting the book from the database.
  */
 export const deleteBook = async (req, res, next) => {

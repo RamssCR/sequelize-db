@@ -4,7 +4,9 @@ import { hash, compare } from 'bcryptjs'
 
 /**
  * Register a new user when filling the required fields.
- * @type {import('express').RequestHandler}
+ * @param {import("express").Request} req - The request object.
+ * @param {import("express").Response} res - The response object.
+ * @param {import("express").NextFunction} next - The next middleware function.
  * @throws {Error} If the user is already registered or if there is an error during registration.
  */
 export const register = async (req, res, next) => {
@@ -50,7 +52,10 @@ export const register = async (req, res, next) => {
 
 /**
  * Login a user with the provided credentials.
-  * @type {import('express').RequestHandler}
+ * @param {import('express').Request} req - The request object.
+ * @param {import('express').Response} res - The response object.
+ * @param {import('express').NextFunction} next - The next middleware function.
+ * @returns {Promise<void>} - A promise that resolves when the user is logged in.
  * @throws {Error} If the credentials are invalid or if there is an error during login.
  */
 export const login = async (req, res, next) => {
@@ -94,11 +99,13 @@ export const login = async (req, res, next) => {
 
 /**
  * Get the profile of the logged-in user.
- * @type {import('express').RequestHandler}
+ * @param {import('express').Request} req - The request object.
+ * @param {import('express').Response} res - The response object.
+ * @param {import('express').NextFunction} next - The next middleware function.
+ * @returns {Promise<void>} - A promise that resolves when the profile is retrieved.
  * @throws {Error} If there is an error during profile retrieval.
  */
 export const profile = async (req, res, next) => {
-  // @ts-expect-error: extended via declaration merging
   const id = req.user?.id
 
   try {
@@ -135,7 +142,10 @@ export const profile = async (req, res, next) => {
 
 /**
  * Logout the user by clearing the session or token.
-  * @type {import('express').RequestHandler}
+ * @param {import('express').Request} req - The request object.
+ * @param {import('express').Response} res - The response object.
+ * @param {import('express').NextFunction} next - The next middleware function.
+ * @returns {Promise<void>} - A promise that resolves when the user is logged out.
  * @throws {Error} If there is an error during logout.
  */
 export const logout = async (req, res, next) => {

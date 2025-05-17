@@ -1,7 +1,7 @@
 import "express"
 
-declare module "express" {
-    export interface Request {
-        user?: import('#@types/jsonwebtoken/index').DecodedToken
-    }
+declare module "express-serve-static-core" {
+  export interface Request {
+    user?: import("#@types/jsonwebtoken/index").DecodedToken;
+  }
 }

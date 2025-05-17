@@ -4,7 +4,12 @@ import { JWT_SECRET } from '#configs/env.config.js'
 /**
  * Validates the JWT token in the request headers.
  * If the token is valid, it adds the decoded user information to the request object.
- * @type {import('express').RequestHandler} 
+ * If the token is invalid or missing, it sends a 401 Unauthorized response.
+ * @param {import('express').Request} req - The request object.
+ * @param {import('express').Response} res - The response object.
+ * @param {import('express').NextFunction} next - The next middleware function.
+ * @returns {void}
+ * @throws {Error} If the token is invalid or missing.
  */
 export const validateToken = (req, res, next) => {
   const { token } = req.cookies
@@ -29,7 +34,7 @@ export const validateToken = (req, res, next) => {
       })
     }
 
-    // @ts-expect-error: extended via declaration merging
+    // @ts-expect-error: Type 'string | JwtPayload | undefined' is not assignable to type 'DecodedToken | undefined'.
     req.user = decoded
     next()
   }
