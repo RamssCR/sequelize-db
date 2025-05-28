@@ -74,9 +74,9 @@ export const getShelfBookBySlug = async (req, res, next) => {
       })
 
     if (!book) {
-      res.status(400).json({
+      res.status(404).json({
         status: 'fail',
-        message: 'Invalid search query'
+        message: 'Book not found in user shelf'
       })
       return
     }
@@ -106,9 +106,9 @@ export const addBookToShelf = async (req, res, next) => {
     const book = await Book.findOne({ where: { slug } })
 
     if (!book) {
-      res.status(400).json({
+      res.status(404).json({
         status: 'fail',
-        message: 'Invalid search query'
+        message: 'Book not found in user shelf'
       })
       return
     }
@@ -146,13 +146,13 @@ export const removeBookFromShelf = async (req, res, next) => {
         include: [{ model: Book, where: { slug } }]
       })
     if (!book) {
-      res.status(400).json({
+      res.status(404).json({
         status: 'fail',
-        message: 'Invalid search query'
+        message: 'Book not found in user shelf'
       })
       return
     }
-    
+
     await book.destroy()
     res.json({
       status: 'success',
