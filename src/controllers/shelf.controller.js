@@ -108,7 +108,7 @@ export const addBookToShelf = async (req, res, next) => {
     if (!book) {
       res.status(404).json({
         status: 'fail',
-        message: 'Book not found in user shelf'
+        message: 'Book not found in the books collection'
       })
       return
     }
