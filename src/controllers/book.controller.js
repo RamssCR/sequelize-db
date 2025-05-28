@@ -3,7 +3,7 @@ import { Book } from '#models/book.model.js'
 import { Author } from '#models/author.model.js'
 import { Category } from '#models/category.model.js'
 import { Genre } from '#models/genre.model.js'
-import { buildQuery } from '#utils/buildQuery.js';
+import { buildQuery } from '#utils/buildQuery.js'
 
 /**
  * Retrieves all books from the database.
@@ -28,7 +28,6 @@ export const getAllBooks = async (req, res, next) => {
 
   try {
     const { count, rows: books } = await Book
-      .scope('cleanQuery')
       .findAndCountAll({ 
         include,
         limit: limitNumber,
@@ -131,7 +130,7 @@ export const updateBook = async (req, res, next) => {
   const { title } = req.body
 
   try {
-    const book = await Book.scope('cleanQuery').findOne({ where: { slug: bookSlug } })
+    const book = await Book.findOne({ where: { slug: bookSlug } })
     if (!book) {
       res.status(400).json({
         status: 'fail',
@@ -166,7 +165,7 @@ export const deleteBook = async (req, res, next) => {
   const { slug } = req.params
 
   try {
-    const book = await Book.scope('cleanQuery').findOne({ where: { slug } })
+    const book = await Book.findOne({ where: { slug } })
     if (!book) {
       res.status(400).json({
         status: 'fail',
