@@ -47,16 +47,34 @@ export const Book = sequelize.define('Book', {
 }, {
   timestamps: true,
   paranoid: true,
-  scopes: {
-    cleanQuery: {
-      attributes: {
-        exclude: ['createdAt', 'updatedAt', 'deletedAt', 'AuthorId', 'CategoryId', 'GenreId'],
-      },
-    }
+  defaultScope: {
+    attributes: {
+      exclude: ['createdAt', 'updatedAt', 'deletedAt', 'AuthorId', 'CategoryId', 'GenreId'],
+    },
   }
 })
 
-// Associations
+export const Shelf = sequelize.define('Shelf', {
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    primaryKey: true
+  },
+  status: {
+    type: DataTypes.ENUM('to-read', 'reading', 'read'),
+    allowNull: false,
+    defaultValue: 'to-read',
+  },
+}, {
+  timestamps: true,
+  defaultScope: {
+    attributes: {
+      exclude: ['createdAt', 'updatedAt', 'deletedAt', 'BookId', 'UserId'],
+    },
+  }
+})
+
+// 1:N Associations
 Author.hasMany(Book)
 Book.belongsTo(Author)
 
@@ -66,5 +84,13 @@ Book.belongsTo(Category)
 Genre.hasMany(Book)
 Book.belongsTo(Genre)
 
-Book.belongsToMany(User, { through: 'Shelf' })
-User.belongsToMany(Book, { through: 'Shelf' })
+// M:N Associations
+Book.belongsToMany(User, { through: Shelf })
+User.belongsToMany(Book, { through: Shelf })
+
+// Sequelize Associations
+Shelf.belongsTo(Book)
+Book.hasMany(Shelf)
+
+Shelf.belongsTo(User)
+User.hasMany(Shelf)
