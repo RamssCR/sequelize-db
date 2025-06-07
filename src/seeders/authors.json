@@ -16,5 +16,11 @@
     { "name": "Chimamanda Ngozi Adichie", "birthDate": "1977-09-15" },
     { "name": "Kazuo Ishiguro", "birthDate": "1954-11-08" },
     { "name": "Isabel Allende", "birthDate": "1942-08-02" },
-    { "name": "Orson Scott Card", "birthDate": "1951-08-24" }
+    { "name": "Orson Scott Card", "birthDate": "1951-08-24" },
+    { "name": "Oscar Wilde", "birthDate": "1854-10-16" },
+    { "name": "Paulo Coelho", "birthDate": "1947-08-24" },
+    { "name": "J.D. Salinger", "birthDate": "1919-01-01" },
+    { "name": "J.R.R. Tolkien", "birthDate": "1892-01-03" },
+    { "name": "Mary Shelley", "birthDate": "1797-08-30" },
+    { "name": "Emily Brontë", "birthDate": "1818-07-30" }
 ]

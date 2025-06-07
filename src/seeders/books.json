@@ -5,11 +5,10 @@
     "subtitle": "The Ingenious Gentleman of La Mancha",
     "synopsis": "A tale of an elderly man who becomes obsessed with books of chivalry and decides to become a knight-errant.",
     "content": "In a village of La Mancha, whose name I do not wish to remember...",
-    "cover": "https://images-na.ssl-images-amazon.com/images/P/0060934344.01.L.jpg",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/0142437239.01.L.jpg",
     "pages": 863,
     "chapters": 52,
     "authorName": "Miguel de Cervantes",
-    "categoryName": "Fiction",
     "genreName": "Classic Literature"
   },
   {
@@ -22,7 +21,6 @@
     "pages": 328,
     "chapters": 23,
     "authorName": "George Orwell",
-    "categoryName": "Fiction",
     "genreName": "Dystopian"
   },
   {
@@ -35,7 +33,6 @@
     "pages": 324,
     "chapters": 28,
     "authorName": "Toni Morrison",
-    "categoryName": "Fiction",
     "genreName": "Literary Fiction"
   },
   {
@@ -48,7 +45,6 @@
     "pages": 288,
     "chapters": 23,
     "authorName": "Kazuo Ishiguro",
-    "categoryName": "Fiction",
     "genreName": "Literary Fiction"
   },
   {
@@ -61,7 +57,6 @@
     "pages": 311,
     "chapters": 46,
     "authorName": "Margaret Atwood",
-    "categoryName": "Fiction",
     "genreName": "Dystopian"
   },
   {
@@ -74,7 +69,6 @@
     "pages": 432,
     "chapters": 61,
     "authorName": "Jane Austen",
-    "categoryName": "Fiction",
     "genreName": "Classic Literature"
   },
   {
@@ -87,7 +81,6 @@
     "pages": 288,
     "chapters": 18,
     "authorName": "Aldous Huxley",
-    "categoryName": "Fiction",
     "genreName": "Dystopian"
   },
   {
@@ -100,7 +93,90 @@
     "pages": 376,
     "chapters": 31,
     "authorName": "Harper Lee",
-    "categoryName": "Fiction",
     "genreName": "Classic Literature"
+  },
+  {
+    "title": "One Hundred Years of Solitude",
+    "slug": "one-hundred-years-of-solitude",
+    "subtitle": "A Saga of the Buendía Family",
+    "synopsis": "The multi-generational story of the Buendía family in the mythical town of Macondo.",
+    "content": "Many years later, as he faced the firing squad, Colonel Aureliano Buendía was to remember that distant afternoon when his father took him to discover ice...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/0060883286.01.L.jpg",
+    "pages": 417,
+    "chapters": 20,
+    "authorName": "Gabriel García Márquez",
+    "genreName": "Magical Realism"
+  },
+  {
+    "title": "The Great Gatsby",
+    "slug": "the-great-gatsby",
+    "subtitle": "The American Dream Gone Wrong",
+    "synopsis": "A mysterious millionaire's obsession with his lost love leads to tragedy in the Roaring Twenties.",
+    "content": "In my younger and more vulnerable years my father gave me some advice that I've been turning over in my mind ever since...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/0743273567.01.L.jpg",
+    "pages": 180,
+    "chapters": 9,
+    "authorName": "F. Scott Fitzgerald",
+    "genreName": "Classic Literature"
+  },
+  {
+    "title": "The Alchemist",
+    "slug": "the-alchemist",
+    "subtitle": "A Mystical Journey of Self-Discovery",
+    "synopsis": "A young shepherd embarks on a journey to find his Personal Legend and discover the meaning of life.",
+    "content": "The boy's name was Santiago. Dusk was falling as the boy arrived with his herd at an abandoned church...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/0062315005.01.L.jpg",
+    "pages": 197,
+    "chapters": 2,
+    "authorName": "Paulo Coelho",
+    "genreName": "Philosophical Fiction"
+  },
+  {
+    "title": "The Catcher in the Rye",
+    "slug": "the-catcher-in-the-rye",
+    "subtitle": "A Story of Teenage Alienation",
+    "synopsis": "A teenage boy's experiences in New York City after being expelled from his prep school.",
+    "content": "If you really want to hear about it, the first thing you'll probably want to know is where I was born...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/0316769487.01.L.jpg",
+    "pages": 234,
+    "chapters": 26,
+    "authorName": "J.D. Salinger",
+    "genreName": "Coming of Age"
+  },
+  {
+    "title": "The Lord of the Rings",
+    "slug": "the-lord-of-the-rings",
+    "subtitle": "The Fellowship of the Ring",
+    "synopsis": "A hobbit undertakes a perilous quest to destroy a powerful ring and save Middle-earth from dark forces.",
+    "content": "When Mr. Bilbo Baggins of Bag End announced that he would shortly be celebrating his eleventy-first birthday...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/0618640150.01.L.jpg",
+    "pages": 1178,
+    "chapters": 62,
+    "authorName": "J.R.R. Tolkien",
+    "genreName": "Fantasy"
+  },
+  {
+    "title": "Wuthering Heights",
+    "slug": "wuthering-heights",
+    "subtitle": "A Gothic Tale of Passion and Revenge",
+    "synopsis": "A tragic love story set on the Yorkshire moors about the destructive relationship between Catherine and Heathcliff.",
+    "content": "I have just returned from a visit to my landlord - the solitary neighbour that I shall be troubled with...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/0141439556.01.L.jpg",
+    "pages": 342,
+    "chapters": 34,
+    "authorName": "Emily Brontë",
+    "genreName": "Gothic Fiction"
+  },
+  {
+    "title": "Frankenstein",
+    "slug": "frankenstein",
+    "subtitle": "The Modern Prometheus",
+    "synopsis": "A young scientist creates a sapient creature in an unorthodox experiment, leading to tragic consequences.",
+    "content": "You will rejoice to hear that no disaster has accompanied the commencement of an enterprise...",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/0486282112.01.L.jpg",
+    "pages": 280,
+    "chapters": 24,
+    "authorName": "Mary Shelley",
+    "genreName": "Gothic Fiction"
   }
 ]

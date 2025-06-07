@@ -29,5 +29,9 @@
     { "name": "New Adult Fiction", "slug": "new-adult-fiction" },
     { "name": "Historical Romance", "slug": "historical-romance" },
     { "name": "Urban Fantasy", "slug": "urban-fantasy" },
-    { "name": "Paranormal Romance", "slug": "paranormal-romance" }
+    { "name": "Paranormal Romance", "slug": "paranormal-romance" },
+    { "name": "Magical Realism", "slug": "magical-realism" },
+    { "name": "Gothic Fiction", "slug": "gothic-fiction" },
+    { "name": "Coming of Age", "slug": "coming-of-age" },
+    { "name": "Philosophical Fiction", "slug": "philosophical-fiction" }
 ]
