@@ -1,6 +1,5 @@
 import { Book, Shelf } from '#models/book.model.js'
 import { Author } from '#models/author.model.js'
-import { Category } from '#models/category.model.js'
 import { Genre } from '#models/genre.model.js'
 import { buildQuery } from '#utils/buildQuery.js'
 
@@ -20,7 +19,6 @@ export const getAllShelfBooks = async (req, res, next) => {
 
   let include = [
     buildQuery(Author),
-    buildQuery(Category),
     buildQuery(Genre)
   ]
 
@@ -62,7 +60,6 @@ export const getShelfBookBySlug = async (req, res, next) => {
 
   let include = [
     buildQuery(Author),
-    buildQuery(Category),
     buildQuery(Genre)
   ]
 

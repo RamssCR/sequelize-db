@@ -1,7 +1,6 @@
 import slug from 'slug'
 import { Book } from '#models/book.model.js'
 import { Author } from '#models/author.model.js'
-import { Category } from '#models/category.model.js'
 import { Genre } from '#models/genre.model.js'
 import { buildQuery } from '#utils/buildQuery.js'
 
@@ -15,14 +14,13 @@ import { buildQuery } from '#utils/buildQuery.js'
  * @throws {Error} If an error occurs while retrieving books from the database.
  */
 export const getAllBooks = async (req, res, next) => {
-  const { category, genre, page, limit } = req.query
+  const { genre, page, limit } = req.query
   const pageNumber = Number(page) || 1
   const limitNumber = Number(limit) || 10
   const offset = (pageNumber - 1) * limitNumber
 
   let include = [
     buildQuery(Author),
-    buildQuery(Category, category),
     buildQuery(Genre, genre),
   ]
 
@@ -63,7 +61,6 @@ export const getBookBySlug = async (req, res, next) => {
 
   const include = [
     buildQuery(Author),
-    buildQuery(Category),
     buildQuery(Genre),
   ]
 

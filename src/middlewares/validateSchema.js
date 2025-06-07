@@ -7,7 +7,7 @@ import { z } from "zod"
  * @param {Record<string, unknown>} object - The object to validate.
  * @param {z.ZodSchema} schema - The zod schema to validate against.
  * @param {'full' | 'partial'} type - The type of validation to perform ('full' or 'partial').
- * @returns {string[]} - A list of error messages if validation fails, otherwise an empty array.
+ * @returns {string} - A list of error messages if validation fails, otherwise an empty array.
  */
 const parseSchema = (object, schema, type = "full") => {
   let result
@@ -19,11 +19,11 @@ const parseSchema = (object, schema, type = "full") => {
   }
 
   if (result.error) {
-    const errors = result.error?.errors.map((error) => error.message) ?? []
-    return errors
+    const error = result.error?.errors[0].message ?? ""
+    return error
   }
 
-  return []
+  return ""
 }
 
 /**
@@ -36,9 +36,13 @@ const parseSchema = (object, schema, type = "full") => {
  */
 export const validateSchema = (schema, type = "full") => {
   return (req, res, next) => {
-    const errors = parseSchema(req.body, schema, type)
+    const error = parseSchema(req.body, schema, type)
 
-    if (errors.length > 0) return res.status(400).json({ errors })
+    if (error !== '') return res.status(400).json({ 
+      status: 'error',
+      code: 400,
+      message: error,
+    })
     next()
   }
 }
