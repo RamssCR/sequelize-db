@@ -12,7 +12,9 @@ const app = express()
 app.use(json())
 app.use(urlencoded({ extended: true }))
 app.use(cors())
-app.use(helmet())
+app.use(helmet({
+  contentSecurityPolicy: false
+}))
 app.use(parser())
 app.use('/api/v1', router)
 app.use(errorHandler)
