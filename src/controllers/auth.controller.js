@@ -38,11 +38,9 @@ export const register = async (req, res, next) => {
       status: 'success',
       message: 'user registered successfully',
       data: {
-        user: {
-          id: user.dataValues.id,
-          username: user.dataValues.username,
-          email: user.dataValues.email
-        }
+        id: user.dataValues.id,
+        username: user.dataValues.username,
+        email: user.dataValues.email
       }
     })
   } catch (error) {
@@ -85,11 +83,9 @@ export const login = async (req, res, next) => {
       status: 'success',
       message: 'user logged in successfully',
       data: {
-        user: {
-          id: user.dataValues.id,
-          username: user.dataValues.username,
-          email: user.dataValues.email
-        }
+        id: user.dataValues.id,
+        username: user.dataValues.username,
+        email: user.dataValues.email
       }
     })
   } catch (error) {
@@ -128,11 +124,9 @@ export const profile = async (req, res, next) => {
       status: 'success',
       message: 'user profile retrieved successfully',
       data: {
-        user: {
-          id: user.dataValues.id,
-          username: user.dataValues.username,
-          email: user.dataValues.email
-        }
+        id: user.dataValues.id,
+        username: user.dataValues.username,
+        email: user.dataValues.email
       }
     })
   } catch (error) {
