@@ -1,6 +1,5 @@
 import { DataTypes } from 'sequelize'
 import { Author } from '#models/author.model.js'
-import { Category } from '#models/category.model.js'
 import { Genre } from '#models/genre.model.js'
 import { User } from '#models/user.model.js'
 import { sequelize } from '#configs/database.config.js'
@@ -77,9 +76,6 @@ export const Shelf = sequelize.define('Shelf', {
 // 1:N Associations
 Author.hasMany(Book)
 Book.belongsTo(Author)
-
-Category.hasMany(Book)
-Book.belongsTo(Category)
 
 Genre.hasMany(Book)
 Book.belongsTo(Genre)
