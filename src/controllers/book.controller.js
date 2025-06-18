@@ -3,6 +3,7 @@ import { Book } from '#models/book.model.js'
 import { Author } from '#models/author.model.js'
 import { Genre } from '#models/genre.model.js'
 import { buildQuery } from '#utils/buildQuery.js'
+import { flattenNestedObject } from '#utils/flattenNestedObject.js'
 
 /**
  * Retrieves all books from the database.
@@ -40,7 +41,10 @@ export const getAllBooks = async (req, res, next) => {
         page: pageNumber,
         size: limitNumber,
         totalPages: Math.ceil(count / limitNumber),
-        books
+        books: books.map(book => {
+          const plainBook = book.get({ plain: true })
+          return flattenNestedObject(plainBook, ['Author', 'Genre'], ['name'])
+        })
       },
     })
   } catch (error) {
@@ -65,7 +69,7 @@ export const getBookBySlug = async (req, res, next) => {
   ]
 
   try {
-    const book = await Book.scope('cleanQuery').findOne({
+    const book = await Book.findOne({
       where: { slug },
       include,
     })
@@ -78,10 +82,13 @@ export const getBookBySlug = async (req, res, next) => {
       return
     }
 
+    const plainBook = book.get({ plain: true })
+    const flattenedBook = flattenNestedObject(plainBook, ['Author', 'Genre'], ['name'])
+
     res.json({
       status: 'success',
       message: 'Book retrieved successfully',
-      data: book,
+      data: flattenedBook,
     })
   } catch (error) {
     next(error)
@@ -143,7 +150,10 @@ export const updateBook = async (req, res, next) => {
     res.json({
       status: 'success',
       message: 'Book updated successfully',
-      data: updatedBook,
+      data: () => {
+        const plainBook = updatedBook.get({ plain: true })
+        return flattenNestedObject(plainBook, ['Author', 'Genre'], ['name'])
+      },
     })
   } catch (error) {
     next(error)
