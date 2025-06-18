@@ -2,6 +2,7 @@ import { Book, Shelf } from '#models/book.model.js'
 import { Author } from '#models/author.model.js'
 import { Genre } from '#models/genre.model.js'
 import { buildQuery } from '#utils/buildQuery.js'
+import { flattenNestedObject } from '#utils/flattenNestedObject.js'
 
 /**
  * Retrieves all books from the user's shelf from the database.
@@ -39,8 +40,44 @@ export const getAllShelfBooks = async (req, res, next) => {
         page: pageNumber,
         size: limitNumber,
         totalPages: Math.ceil(count / limitNumber),
-        books
+        books: books.map(book => {
+          const plainBook = book.get({ plain: true })
+          const flattenedBook = flattenNestedObject(plainBook.Book, ['Author', 'Genre'], ['name'])
+          return {
+            ...flattenedBook,
+            status: plainBook.status,
+          }
+        }),
       },
+    })
+  } catch (error) {
+    next(error)
+  }
+}
+
+/**
+ * Retrieves all book IDs from the user's shelf.
+ * This function fetches all books associated with the user's shelf and returns their IDs.
+ * @param {import('express').Request} req - The request object.
+ * @param {import('express').Response} res - The response object.
+ * @param {import('express').NextFunction} next - The next middleware function.
+ * @return {Promise<void>} A promise that resolves when the book IDs are successfully retrieved and sent in the response.
+ * @throws {Error} If an error occurs while retrieving book IDs from the user's shelf.
+ */
+export const getShelfBooksIds = async (req, res, next) => {
+  const userId = req.user?.id
+
+  try {
+    const books = await Shelf
+      .findAll({
+        where: { UserId: userId },
+        attributes: ['BookId']
+      })
+
+    res.json({
+      status: 'success',
+      message: books.length > 0 ? 'Book IDs retrieved successfully' : 'No books found in user shelf',
+      data: books.map(book => book.dataValues.BookId)
     })
   } catch (error) {
     next(error)
@@ -78,10 +115,16 @@ export const getShelfBookBySlug = async (req, res, next) => {
       return
     }
 
+    const plainBook = book.get({ plain: true })
+    const flattenedBook = flattenNestedObject(plainBook.Book, ['Author', 'Genre'], ['name'])
+
     res.json({
       status: 'success',
       message: 'Book retrieved successfully',
-      data: book
+      data: {
+        ...flattenedBook,
+        status: plainBook.status,
+      }
     })
   } catch (error) {
     next(error)
