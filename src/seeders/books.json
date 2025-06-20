@@ -178,5 +178,17 @@
     "chapters": 24,
     "authorName": "Mary Shelley",
     "genreName": "Gothic Fiction"
+  },
+  {
+    "title": "Coraline and the Secret Door",
+    "slug": "coraline-and-the-secret-door",
+    "subtitle": "A Tale of Curiosity and Courage",
+    "synopsis": "Coraline Jones, a young girl bored with her mundane life, discovers a hidden door in her new home that leads to an alternate universe. In this strange world, she meets her 'Other Mother,' who initially seems more attentive and loving than Coraline's real parents. However, as Coraline explores this new reality, she uncovers dark secrets and realizes that the Other Mother has sinister intentions.|Determined to save her real parents and escape the clutches of the Other Mother, Coraline must summon her courage and resourcefulness. With the help of a talking cat and other quirky characters, she embarks on a perilous journey to confront the Other Mother and reclaim her life.",
+    "content": "In the beginning, Coraline discovers the door that leads to the other world.",
+    "cover": "https://images-na.ssl-images-amazon.com/images/P/0380807343.01.L.jpg",
+    "pages": 162,
+    "chapters": 13,
+    "authorName": "Neil Gaiman",
+    "genreName": "Fantasy"
   }
 ]
