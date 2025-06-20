@@ -31,12 +31,13 @@ const parseSchema = (object, schema, type = "full") => {
  * If the validation fails, it sends a 400 response with the error message.
  * If the validation succeeds, it calls the next middleware.
  * @param {z.ZodSchema} schema - The zod schema to validate against.
- * @param {'full' | 'partial'} [type] - The type of validation to perform ('full' or 'partial').
+ * @param {'full' | 'partial'} [type='full'] - The type of validation to perform ('full' or 'partial').
+ * @param {'body' | 'query' | 'params'} [key='body'] - The key in the request object to validate (default is 'body').
  * @returns {(req: import('express').Request, res: import('express').Response, next: import('express').NextFunction) => void} - The middleware function.
  */
-export const validateSchema = (schema, type = "full") => {
+export const validateSchema = (schema, key = 'body', type = "full") => {
   return (req, res, next) => {
-    const error = parseSchema(req.body, schema, type)
+    const error = parseSchema(req[key], schema, type)
 
     if (error !== '') return res.status(400).json({ 
       status: 'error',
