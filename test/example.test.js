@@ -1,46 +1,41 @@
-import { describe, test } from 'node:test'
-import assert from 'node:assert/strict'
+import { describe, expect, test } from 'vitest'
 
 describe('example test suite', () => {
   test('should correctly add two numbers', () => {
     const result = 2 + 2
-    assert.equal(result, 4)
+    expect(result).toBe(4)
   })
 
   test('should properly handle string concatenation', () => {
     const str1 = 'Hello'
     const str2 = 'World'
-    assert.equal(str1 + ' ' + str2, 'Hello World')
+    expect(str1 + ' ' + str2).toBe('Hello World')
   })
 
   test('should verify array operations', () => {
     const arr = [1, 2, 3]
     arr.push(4)
-    assert.equal(arr.length, 4)
-    assert.deepEqual(arr, [1, 2, 3, 4])
+    expect(arr.length).toBe(4)
+    expect(arr).toEqual([1, 2, 3, 4])
   })
 
   test('should check object properties', () => {
     const obj = { name: 'Test', value: 42 }
-    assert.equal(obj.name, 'Test')
-    assert.equal(obj.value, 42)
+    expect(obj.name).toBe('Test')
+    expect(obj.value).toBe(42)
   })
 
   test('should handle async operations', async () => {
     const promise = Promise.resolve('success')
     const result = await promise
-    assert.equal(result, 'success')
+    expect(result).toBe('success')
   })
 
   test('should validate error handling', () => {
-    assert.throws(
+    expect(
       () => {
         throw new Error('Test error')
-      },
-      {
-        name: 'Error',
-        message: 'Test error'
       }
-    )
+    ).toThrow('Test error')
   })
 })
