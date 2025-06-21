@@ -1,6 +1,6 @@
 /**
  * @typedef {{
- *   PORT: string,
+ *   PORT: number,
  *   JWT_SECRET: string,
  *   NODE_ENV: string,
  *   POSTGRES_URI: string,

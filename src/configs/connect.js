@@ -2,6 +2,7 @@ import '#models/author.model.js'
 import '#models/genre.model.js'
 import '#models/user.model.js'
 import '#models/book.model.js'
+import '#models/chapter.model.js'
 import { sequelize } from './database.config.js'
 
 /**

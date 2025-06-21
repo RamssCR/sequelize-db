@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize'
 import { Author } from '#models/author.model.js'
+import { Chapter } from '#models/chapter.model.js'
 import { Genre } from '#models/genre.model.js'
 import { User } from '#models/user.model.js'
 import { sequelize } from '#configs/database.config.js'
@@ -79,6 +80,9 @@ Book.belongsTo(Author)
 
 Genre.hasMany(Book)
 Book.belongsTo(Genre)
+
+Book.hasMany(Chapter)
+Chapter.belongsTo(Book)
 
 // M:N Associations
 Book.belongsToMany(User, { through: Shelf })
