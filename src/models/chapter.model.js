@@ -29,7 +29,7 @@ export const Chapter = sequelize.define('Chapter', {
   paranoid: true,
   defaultScope: {
     attributes: {
-      exclude: ['createdAt', 'updatedAt', 'deletedAt'],
+      exclude: ['createdAt', 'updatedAt', 'deletedAt', 'BookId'],
     },
   },
 })
