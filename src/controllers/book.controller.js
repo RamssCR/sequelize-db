@@ -145,15 +145,14 @@ export const updateBook = async (req, res, next) => {
 
     const updatedBook = await book.update({
       ...req.body,
-      slug: slug(title || book.dataValues.title, { lower: true }),
+      slug: slug(title, { lower: true }),
     })
+
+    const plainBook = updatedBook.get({ plain: true })    
     res.json({
       status: 'success',
       message: 'Book updated successfully',
-      data: () => {
-        const plainBook = updatedBook.get({ plain: true })
-        return flattenNestedObject(plainBook, ['Author', 'Genre'], ['name'])
-      },
+      data: flattenNestedObject(plainBook, ['Author', 'Genre'], ['name']),
     })
   } catch (error) {
     next(error)
