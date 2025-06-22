@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken'
-import { JWT_SECRET } from '#configs/env.config.js'
 
 /**
  * Creates a JWT token with the given payload and secret.
@@ -8,6 +7,8 @@ import { JWT_SECRET } from '#configs/env.config.js'
  * @throws {JsonWebTokenError} If there is an error while signing the token.
  */
 export const createToken = (payload) => {
+  const JWT_SECRET = /** @type {string} */(process.env.JWT_SECRET)
+
   return new Promise((resolve, reject) => {
     try {
       const token = jwt.sign(payload, JWT_SECRET, { expiresIn: "1D" })

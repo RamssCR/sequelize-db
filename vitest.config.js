@@ -9,7 +9,14 @@ export default defineConfig({
     threads: false,
     coverage: {
       provider: 'v8',
-      reporter: ['text', 'json', 'html'],
+      reporter: ['text', 'json', 'html', 'lcov'],
+      all: true,
+      thresholds: {
+        lines: 90,
+        functions: 90,
+        branches: 90,
+        statements: 90
+      },
       exclude: [
         'test/**',
         'src/configs/**',

@@ -1,5 +1,3 @@
-import { ALLOWED_ORIGINS, NODE_ENV } from '#configs/env.config.js'
-
 /**
  * Allows cross-origin requests to the server.
  * This middleware is used to enable CORS (Cross-Origin 
@@ -7,7 +5,8 @@ import { ALLOWED_ORIGINS, NODE_ENV } from '#configs/env.config.js'
  * @returns {(req: import('express').Request, res: import('express').Response, next: import('express').NextFunction) => void} - The middleware function
  */
 export const cors = () => {
-  const origins = ALLOWED_ORIGINS?.split(',') ?? []
+  const NODE_ENV = process.env.NODE_ENV
+  const origins = process.env.ALLOWED_ORIGINS?.split(',') ?? []
 
   return (req, res, next) => {
     const origin = req.headers?.origin
