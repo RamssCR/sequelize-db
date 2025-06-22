@@ -19,7 +19,7 @@ const parseSchema = (object, schema, type = "full") => {
   }
 
   if (result.error) {
-    const error = result.error?.errors[0].message ?? ""
+    const error = result.error?.errors[0].message
     return error
   }
 
