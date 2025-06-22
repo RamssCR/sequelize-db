@@ -1,5 +1,6 @@
 import express, { json, urlencoded } from 'express'
-import { PORT } from '#configs/env.config.js'
+import { PORT, NODE_ENV } from '#configs/env.config.js'
+import { basename } from 'node:path'
 import { connectDB } from '#configs/connect.js'
 import { cors } from '#middlewares/cors.js'
 import { errorHandler } from '#middlewares/errorHandler.js'
@@ -29,4 +30,6 @@ app.get('/health', (req, res) => {
 
 await connectDB()
 
-app.listen(PORT, () => console.log(`Server is running at http://localhost:${PORT}`))
+if (basename(import.meta.url) === basename(process.argv[1]) && NODE_ENV !== 'test') {
+  app.listen(PORT, () => console.log(`Server is running at http://localhost:${PORT}`))
+}
